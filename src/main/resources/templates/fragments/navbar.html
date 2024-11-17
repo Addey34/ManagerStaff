@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="/css/global.css">
 </head>
 <body>
-<!-- Déclaration du fragment "navbar" -->
 <div th:fragment="navbar">
     <div class="navbar">
         <a href="/" class="navbar-brand">Gestion d'Entreprise</a>
@@ -25,8 +24,8 @@
             </li>
         </ul>
         <div class="user-profile">
-            <a href="/profile" class="link-button" th:text="${username}"></a> <!-- Nom de l'utilisateur connecté -->
-            <a href="/logout" class="logout-button">Déconnexion</a> <!-- Bouton de déconnexion -->
+            <a href="/profile" class="link-button" th:text="${username}"></a>
+            <a href="/logout" class="logout-button">Déconnexion</a>
         </div>
     </div>
 </div>
