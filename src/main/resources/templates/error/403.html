@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Accès Interdit</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f2f2f2;
+        padding: 50px;
+    }
+    .container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        display: inline-block;
+    }
+    h1 {
+        color: #e74c3c;
+    }
+    p {
+        color: #333;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>403 - Accès Interdit</h1>
+  <p>Désolé, mais vous n'avez pas l'autorisation d'accéder à cette ressource.</p>
+  <a href="/view" th:href="@{/view}">Retour à l'accueil</a>
+</div>
+</body>
+</html>

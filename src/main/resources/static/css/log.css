@@ -1,0 +1,144 @@
+/* Conteneur principal */
+.container {
+  flex: 1;
+  width: 60%;
+  margin: 1em auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Titres */
+.title {
+  text-align: center;
+  margin-top: 20px;
+  color: #007bff;
+  font-size: 24px;
+}
+
+/* Formulaire */
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.form-label {
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 18px; /* Augmenter la taille des labels */
+}
+
+.form-input {
+  padding: 15px; /* Augmenter le padding pour une meilleure expérience utilisateur */
+  margin-top: 10px; /* Augmenter l'espacement entre les champs */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 400px; /* Augmenter la largeur maximale */
+  font-size: 18px; /* Augmenter la taille du texte dans les champs */
+}
+
+.form-button {
+  margin-top: 25px; /* Augmenter l'espacement au-dessus du bouton */
+  padding: 15px 25px; /* Augmenter le padding du bouton */
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  font-size: 18px; /* Augmenter la taille du texte du bouton */
+  cursor: pointer;
+}
+
+.form-button:hover {
+  background-color: #0056b3;
+}
+
+.link {
+  text-decoration: none;
+  color: #007bff;
+  margin-top: 25px; /* Augmenter l'espacement au-dessus du lien */
+  display: block;
+  text-align: center;
+  font-size: 18px; /* Augmenter la taille du texte du lien */
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.error-message {
+  color: red;
+  text-align: center;
+  font-size: 18px; /* Augmenter la taille du texte des messages d'erreur */
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    width: 80%; /* Augmenter la largeur pour les tablettes */
+  }
+
+  .title {
+    font-size: 28px; /* Augmenter la taille du titre */
+  }
+
+  .form-label {
+    font-size: 20px; /* Augmenter la taille des labels */
+  }
+
+  .form-input {
+    font-size: 20px; /* Augmenter la taille du texte des champs */
+    max-width: 100%; /* Utiliser toute la largeur disponible */
+  }
+
+  .form-button {
+    font-size: 20px; /* Augmenter la taille du texte du bouton */
+    padding: 12px 24px; /* Augmenter le padding du bouton */
+  }
+
+  .link {
+    font-size: 20px; /* Augmenter la taille du texte du lien */
+  }
+
+  .error-message {
+    font-size: 20px; /* Augmenter la taille du texte des messages d'erreur */
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 90%; /* Augmenter la largeur pour les petits écrans */
+    padding: 15px; /* Réduire le padding pour économiser de l'espace */
+  }
+
+  .title {
+    font-size: 32px; /* Augmenter la taille du titre */
+  }
+
+  .form-label {
+    font-size: 22px; /* Augmenter la taille des labels */
+  }
+
+  .form-input {
+    font-size: 22px; /* Augmenter la taille du texte des champs */
+  }
+
+  .form-button {
+    font-size: 22px; /* Augmenter la taille du texte du bouton */
+    padding: 16px 28px; /* Augmenter le padding du bouton */
+  }
+
+  .link {
+    font-size: 22px; /* Augmenter la taille du texte du lien */
+  }
+
+  .error-message {
+    font-size: 22px; /* Augmenter la taille du texte des messages d'erreur */
+  }
+}

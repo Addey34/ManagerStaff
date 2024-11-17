@@ -1,0 +1,131 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+/* Footer */
+.footer {
+  color: white;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-text {
+    color: blue;
+    margin-bottom: 0.5;
+    font-size: 16px;
+}
+
+.footer-links {
+    list-style-type: none !important;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+}
+
+.footer-link-item {
+    margin: 0 10px; /* Espace entre les éléments */
+}
+
+.footer-link {
+    text-decoration: none; /* Supprime le soulignement des liens */
+    color: black;
+}
+
+.footer-link:hover {
+    text-decoration: underline; /* Ajoute le soulignement au survol */
+}
+
+.dash {
+  color: black;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #007bff; /* Couleur principale bleue */
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ajoute une légère ombre */
+}
+
+.navbar-brand {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.navbar-nav {
+  display: flex;
+  gap: 20px; /* Espacement entre les éléments du menu */
+}
+
+.nav-item {
+  list-style-type: none;
+}
+
+.nav-link {
+  color: white;
+  font-size: 16px;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+  background-color: #0056b3; /* Couleur plus sombre au survol */
+  color: white;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-profile a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  border: 1px solid white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.user-profile a:hover {
+  background-color: white;
+  color: #007bff; /* Change la couleur au survol */
+}
+
+/* Media Queries pour le responsive */
+@media (max-width: 768px) {
+  .navbar-nav {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  .user-profile {
+      margin-top: 10px;
+  }
+}

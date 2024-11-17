@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Navbar Gestion d'entreprise</title>
+    <link rel="stylesheet" href="/css/global.css">
+</head>
+<body>
+<!-- Déclaration du fragment "navbar" -->
+<div th:fragment="navbar">
+    <div class="navbar">
+        <a href="/" class="navbar-brand">Gestion d'Entreprise</a>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a href="/dashboard" class="nav-link">Tableau de bord</a>
+            </li>
+            <li class="nav-item">
+                <a href="/view" class="nav-link">Gestion des employés</a>
+            </li>
+            <li class="nav-item">
+                <a href="/planning" class="nav-link">Planning</a>
+            </li>
+            <li class="nav-item">
+                <a href="/settings" class="nav-link">Paramètres</a>
+            </li>
+        </ul>
+        <div class="user-profile">
+            <a href="/profile" class="link-button" th:text="${username}"></a> <!-- Nom de l'utilisateur connecté -->
+            <a href="/logout" class="logout-button">Déconnexion</a> <!-- Bouton de déconnexion -->
+        </div>
+    </div>
+</div>
+</body>
+</html>

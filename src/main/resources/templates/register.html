@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Enregistrement</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/log.css">
+</head>
+<body>
+<div class="container">
+  <h1 class="title">Enregistrement</h1>
+  <form class="form" th:action="@{/register}" method="post" th:object="${user}">
+    <label class="form-label" for="username">Nom d'utilisateur :</label>
+    <input class="form-input" type="text" id="username" th:field="*{username}" required>
+    <label class="form-label" for="password">Mot de passe :</label>
+    <input class="form-input" type="password" id="password" th:field="*{password}" required>
+    <input class="form-button" type="submit" value="S'enregistrer">
+  </form>
+  <a class="link" href="/login">Se connecter</a>
+  <div th:if="${error}" class="error-message">
+    <p class="error-message" th:text="${error}"></p>
+  </div>
+</div>
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

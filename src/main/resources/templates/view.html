@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Liste des employés</title>
+    <link rel="stylesheet" href="/css/global.css">
+    <style>
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            padding: 2em;
+            flex: 1;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2em;
+        }
+
+        .header-title {
+            margin: 0;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0;
+        }
+
+        .table th, .table td {
+            border: 1px solid #ddd;
+            padding: 6px;
+            word-wrap: break-word;
+            word-break: break-word;
+            position: relative;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .table-th {
+            background-color: #007bff;
+            color: white;
+            min-width: 120px;
+            position: relative;
+        }
+
+        .sortable {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 0;
+        }
+
+        .sortable-label {
+            flex: 1;
+            text-align: left;
+        }
+
+        .sortable-arrows {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+        }
+
+        .sortable-arrow {
+            font-size: 16px;
+            color: white;
+            text-decoration: none;
+            padding: 4px;
+            margin: 2px 0;
+            display: block;
+            text-align: center;
+            transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            border-radius: 5px;
+            background: linear-gradient(135deg, #007bff 0%, #00d2ff 100%);
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+        }
+
+        .sortable-arrow:hover {
+            background: linear-gradient(135deg, #00d2ff 0%, #007bff 100%);
+            color: #007bff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .table-tr-even {
+            background-color: #f2f2f2;
+        }
+
+        .table-tr-hover:hover {
+            background-color: #ddd;
+        }
+
+        .delete-button {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .delete-button:hover {
+            background-color: #c82333;
+        }
+
+        .add-employee-button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .add-employee-button:hover {
+            background-color: #218838;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .add-employee-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .action-cell {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50px;
+        }
+
+        .action-cell form {
+            margin: 0;
+        }
+
+        /* Media Queries for Responsive Design */
+        @media (max-width: 768px) {
+            .header-title {
+                font-size: 1.2em;
+            }
+
+            .table-th, .table-td {
+                font-size: 14px;
+                padding: 6px;
+            }
+
+            .table-th {
+                min-width: 100px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: 95%;
+            }
+
+            .header-title {
+                font-size: 1em;
+            }
+
+            .table-th, .table-td {
+                font-size: 12px;
+                padding: 4px;
+            }
+
+            .table-th {
+                min-width: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+    <div class="container">
+    <div class="header">
+        <h1 class="header-title">Liste des employés</h1>
+    </div>
+
+    <div class="table-container">
+        <table class="table">
+            <thead>
+            <tr>
+                <th class="table-th">
+                    <div class="sortable">
+                        <span class="sortable-label">Nom</span>
+                        <div class="sortable-arrows">
+                            <a class="sortable-arrow" th:href="@{/view(sort='nom,asc')}">▲</a>
+                            <a class="sortable-arrow" th:href="@{/view(sort='nom,desc')}">▼</a>
+                        </div>
+                    </div>
+                </th>
+                <th class="table-th">
+                    <div class="sortable">
+                        <span class="sortable-label">Prénom</span>
+                        <div class="sortable-arrows">
+                            <a class="sortable-arrow" th:href="@{/view(sort='prenom,asc')}">▲</a>
+                            <a class="sortable-arrow" th:href="@{/view(sort='prenom,desc')}">▼</a>
+                        </div>
+                    </div>
+                </th>
+                <th class="table-th">
+                    <div class="sortable">
+                        <span class="sortable-label">Email</span>
+                        <div class="sortable-arrows">
+                            <a class="sortable-arrow" th:href="@{/view(sort='email,asc')}">▲</a>
+                            <a class="sortable-arrow" th:href="@{/view(sort='email,desc')}">▼</a>
+                        </div>
+                    </div>
+                </th>
+                <th class="table-th">
+                    <div class="sortable">
+                        <span class="sortable-label">Poste</span>
+                        <div class="sortable-arrows">
+                            <a class="sortable-arrow" th:href="@{/view(sort='poste,asc')}">▲</a>
+                            <a class="sortable-arrow" th:href="@{/view(sort='poste,desc')}">▼</a>
+                        </div>
+                    </div>
+                </th>
+                <th class="table-th">
+                    <div class="sortable">
+                        <span class="sortable-label">Salaire</span>
+                        <div class="sortable-arrows">
+                            <a class="sortable-arrow" th:href="@{/view(sort='salaire,asc')}">▲</a>
+                            <a class="sortable-arrow" th:href="@{/view(sort='salaire,desc')}">▼</a>
+                        </div>
+                    </div>
+                </th>
+                <th class="table-th">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="employee : ${employees}" class="table-tr-even">
+                <td th:text="${employee.nom}"></td>
+                <td th:text="${employee.prenom}"></td>
+                <td th:text="${employee.email}"></td>
+                <td th:text="${employee.poste}"></td>
+                <td th:text="${employee.salaire}"></td>
+                <td class="action-cell">
+                    <!-- Formulaire pour supprimer l'employé -->
+                    <form th:action="@{/{id}/delete(id=${employee.id})}" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet employé ?');">
+                        <input type="hidden" name="_method" value="delete"/>
+                        <button type="submit" class="delete-button">Supprimer</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Container pour centrer le lien "Ajouter un employé" -->
+    <div class="add-employee-container">
+        <a href="#" th:href="@{/add-employee}" class="add-employee-button">Ajouter un employé</a>
+    </div>
+</div>
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>
